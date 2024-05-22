@@ -57,4 +57,28 @@ impl Deck {
 
         manilha_rank
     }
+
+    pub fn reset(&mut self) {
+        self.cards.clear();
+        self.flip_card = None;
+        let suits = [Suit::Clubs, Suit::Hearts, Suit::Spades, Suit::Diamonds];
+        let ranks = [
+            Rank::Three,
+            Rank::Two,
+            Rank::Ace,
+            Rank::King,
+            Rank::Jack,
+            Rank::Queen,
+            Rank::Seven,
+            Rank::Six,
+            Rank::Five,
+            Rank::Four,
+        ];
+
+        for &suit in &suits {
+            for &rank in &ranks {
+                self.cards.push(Card::new(suit, rank));
+            }
+        }
+    }
 }

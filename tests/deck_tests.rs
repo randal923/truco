@@ -92,3 +92,14 @@ fn deck_get_manilha_panics_with_message_if_no_flip_card() {
     let deck = Deck::new();
     let _ = deck.get_manilha();
 }
+
+#[test]
+fn deck_should_reset() {
+    let mut deck = Deck::new();
+    deck.set_flip_card();
+
+    deck.reset();
+
+    assert_eq!(deck.cards.len(), 40, "Deck should have 40 cards");
+    assert_eq!(deck.flip_card, None, "Deck should not have a flip card");
+}
