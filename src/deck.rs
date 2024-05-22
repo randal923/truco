@@ -48,4 +48,11 @@ impl Deck {
         let flip_card = self.cards.swap_remove(index);
         self.flip_card = Some(flip_card);
     }
+
+    pub fn get_manilha(&self) -> Rank {
+        let flip_card = self.flip_card.expect("Flip card is not set");
+        let manilha_rank = flip_card.rank.next();
+
+        manilha_rank
+    }
 }

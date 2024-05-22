@@ -69,3 +69,26 @@ fn deck_has_one_less_card_after_flipping() {
         "Deck should have one less card after flipping"
     );
 }
+
+#[test]
+fn deck_set_manilha_if_flip_card_is_set() {
+    let mut deck = Deck::new();
+
+    deck.set_flip_card();
+
+    let flip_card = deck.flip_card.unwrap();
+    let manilha = deck.get_manilha();
+
+    assert_eq!(
+        manilha,
+        flip_card.rank.next(),
+        "Manilha should be the next rank after the flip card"
+    );
+}
+
+#[test]
+#[should_panic(expected = "Flip card is not set")]
+fn deck_get_manilha_panics_with_message_if_no_flip_card() {
+    let deck = Deck::new();
+    let _ = deck.get_manilha();
+}
