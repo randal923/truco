@@ -11,30 +11,8 @@ pub struct Deck {
 
 impl Deck {
     pub fn new() -> Deck {
-        let mut cards = Vec::new();
-
-        let suits = [Suit::Clubs, Suit::Hearts, Suit::Spades, Suit::Diamonds];
-        let ranks = [
-            Rank::Three,
-            Rank::Two,
-            Rank::Ace,
-            Rank::King,
-            Rank::Jack,
-            Rank::Queen,
-            Rank::Seven,
-            Rank::Six,
-            Rank::Five,
-            Rank::Four,
-        ];
-
-        for &suit in &suits {
-            for &rank in &ranks {
-                cards.push(Card::new(suit, rank));
-            }
-        }
-
         Deck {
-            cards,
+            cards: Deck::create_cards(),
             flip_card: None,
         }
     }
@@ -59,8 +37,12 @@ impl Deck {
     }
 
     pub fn reset(&mut self) {
-        self.cards.clear();
+        self.cards = Deck::create_cards();
         self.flip_card = None;
+    }
+
+    fn create_cards() -> Vec<Card> {
+        let mut cards = Vec::new();
         let suits = [Suit::Clubs, Suit::Hearts, Suit::Spades, Suit::Diamonds];
         let ranks = [
             Rank::Three,
@@ -77,8 +59,10 @@ impl Deck {
 
         for &suit in &suits {
             for &rank in &ranks {
-                self.cards.push(Card::new(suit, rank));
+                cards.push(Card::new(suit, rank));
             }
         }
+
+        cards
     }
 }
