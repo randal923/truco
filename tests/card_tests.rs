@@ -1,21 +1,28 @@
-use truco::deck::Deck;
+use truco::card::{Card, Rank, Suit};
 
 #[test]
-fn deck_contains_all_cards() {
-    let deck = Deck::new();
-
-    assert_eq!(deck.cards.len(), 40, "Deck should have 40 cards");
+fn test_card_creation() {
+    let card = Card::new(Suit::Clubs, Rank::Ace);
+    assert_eq!(card.rank, Rank::Ace, "Card rank should be Ace");
+    assert_ne!(card.suit, Suit::Hearts, "Card suit should not be Hearts");
 }
 
 #[test]
-fn deck_shuffles_all_cards() {
-    let mut deck = Deck::new();
-    let original_deck = deck.cards.clone();
+fn test_rank_order() {
+    assert!(Rank::Four < Rank::Five);
+    assert!(Rank::Five < Rank::Six);
+    assert!(Rank::Six < Rank::Seven);
+    assert!(Rank::Seven < Rank::Queen);
+    assert!(Rank::Queen < Rank::Jack);
+    assert!(Rank::Jack < Rank::King);
+    assert!(Rank::King < Rank::Ace);
+    assert!(Rank::Ace < Rank::Two);
+    assert!(Rank::Two < Rank::Three);
+}
 
-    deck.shuffle();
-
-    assert_ne!(
-        deck.cards, original_deck,
-        "Deck should be shuffled and different from the original"
-    );
+#[test]
+fn test_suit_order() {
+    assert!(Suit::Diamonds < Suit::Spades);
+    assert!(Suit::Spades < Suit::Hearts);
+    assert!(Suit::Hearts < Suit::Clubs);
 }
