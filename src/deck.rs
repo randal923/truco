@@ -1,15 +1,32 @@
+use crate::card::{Card, Rank, Suit};
 use rand::prelude::{thread_rng, SliceRandom};
 
 pub struct Deck {
-    pub cards: Vec<i32>,
+    pub cards: Vec<Card>,
 }
 
 impl Deck {
     pub fn new() -> Deck {
         let mut cards = Vec::new();
 
-        for i in 1..41 {
-            cards.push(i);
+        let suits = [Suit::Clubs, Suit::Hearts, Suit::Spades, Suit::Diamonds];
+        let ranks = [
+            Rank::Three,
+            Rank::Two,
+            Rank::Ace,
+            Rank::King,
+            Rank::Jack,
+            Rank::Queen,
+            Rank::Seven,
+            Rank::Six,
+            Rank::Five,
+            Rank::Four,
+        ];
+
+        for &suit in &suits {
+            for &rank in &ranks {
+                cards.push(Card::new(suit, rank));
+            }
         }
 
         Deck { cards }
