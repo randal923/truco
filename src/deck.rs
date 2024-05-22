@@ -1,8 +1,10 @@
 use crate::card::{Card, Rank, Suit};
 use rand::prelude::{thread_rng, SliceRandom};
+use rand::Rng;
 
 pub struct Deck {
     pub cards: Vec<Card>,
+    pub flip_card: Option<Card>,
 }
 
 impl Deck {
@@ -29,11 +31,21 @@ impl Deck {
             }
         }
 
-        Deck { cards }
+        Deck {
+            cards,
+            flip_card: None,
+        }
     }
 
     pub fn shuffle(&mut self) {
         let mut rng = thread_rng();
         self.cards.shuffle(&mut rng);
+    }
+
+    pub fn set_flip_card(&mut self) {
+        let mut rng = rand::thread_rng();
+        let index = rng.gen_range(0..self.cards.len());
+        let flip_card = self.cards.swap_remove(index);
+        self.flip_card = Some(flip_card);
     }
 }

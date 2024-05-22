@@ -33,3 +33,39 @@ fn deck_shuffles_in_random_order() {
         "Two shuffled decks should not be the same"
     );
 }
+
+#[test]
+fn deck_has_no_flip_card() {
+    let deck = Deck::new();
+
+    assert_eq!(
+        deck.flip_card, None,
+        "Deck should not have a flip card on creation"
+    );
+}
+
+#[test]
+fn deck_has_flip_card_after_flipping() {
+    let mut deck = Deck::new();
+
+    deck.set_flip_card();
+
+    assert_ne!(
+        deck.flip_card, None,
+        "Deck should have a flip card after flipping"
+    );
+}
+
+#[test]
+fn deck_has_one_less_card_after_flipping() {
+    let mut deck = Deck::new();
+    let original_deck_size = deck.cards.len();
+
+    deck.set_flip_card();
+
+    assert_eq!(
+        deck.cards.len(),
+        original_deck_size - 1,
+        "Deck should have one less card after flipping"
+    );
+}
