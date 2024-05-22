@@ -31,3 +31,20 @@ pub enum Rank {
     Two,
     Three,
 }
+
+impl Rank {
+    pub fn next(&self) -> Rank {
+        match self {
+            Rank::Four => Rank::Five,
+            Rank::Five => Rank::Six,
+            Rank::Six => Rank::Seven,
+            Rank::Seven => Rank::Queen,
+            Rank::Queen => Rank::Jack,
+            Rank::Jack => Rank::King,
+            Rank::King => Rank::Ace,
+            Rank::Ace => Rank::Two,
+            Rank::Two => Rank::Three,
+            Rank::Three => Rank::Four,
+        }
+    }
+}
