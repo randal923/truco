@@ -1,5 +1,6 @@
-use truco::card::{Card, Suit};
+use truco::card::Card;
 use truco::rank::Rank;
+use truco::suit::Suit;
 
 #[test]
 fn test_card_creation() {

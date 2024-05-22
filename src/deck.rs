@@ -1,5 +1,6 @@
-use crate::card::{Card, Suit};
+use crate::card::Card;
 use crate::rank::Rank;
+use crate::suit::Suit;
 use rand::prelude::{thread_rng, SliceRandom};
 use rand::Rng;
 
