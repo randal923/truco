@@ -1,4 +1,5 @@
 use crate::card::Card;
+use crate::player::Player;
 use crate::rank::Rank;
 use crate::suit::Suit;
 use rand::prelude::{thread_rng, SliceRandom};
@@ -64,5 +65,17 @@ impl Deck {
         }
 
         cards
+    }
+
+    pub fn deal_cards(&mut self, players: &mut Vec<Player>) {
+        for _ in 0..3 {
+            for player in players.iter_mut() {
+                let card = self
+                    .cards
+                    .pop()
+                    .expect("Error when dealing cards from deck");
+                player.add_card(card);
+            }
+        }
     }
 }

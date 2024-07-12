@@ -1,4 +1,4 @@
-use truco::deck::Deck;
+use truco::{deck::Deck, player::Player};
 
 #[test]
 fn deck_contains_all_cards() {
@@ -102,4 +102,23 @@ fn deck_should_reset() {
 
     assert_eq!(deck.cards.len(), 40, "Deck should have 40 cards");
     assert_eq!(deck.flip_card, None, "Deck should not have a flip card");
+}
+
+#[test]
+fn test_deal_cards() {
+    let mut deck = Deck::new();
+    deck.shuffle();
+
+    let mut players = vec![
+        Player::new("Player 1".to_string()),
+        Player::new("Player 2".to_string()),
+        Player::new("Player 3".to_string()),
+        Player::new("Player 4".to_string()),
+    ];
+
+    deck.deal_cards(&mut players);
+
+    for player in players.iter() {
+        assert_eq!(player.hand.len(), 3);
+    }
 }
