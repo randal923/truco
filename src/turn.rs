@@ -24,7 +24,10 @@ impl Turn {
     pub fn deal_cards(&self, players: &mut Vec<Player>, deck: &mut Deck) {
         for _ in 0..3 {
             for player in players.iter_mut() {
-                let card = deck.cards.pop().expect("No more cards in the deck");
+                let card = deck
+                    .cards
+                    .pop()
+                    .expect("Error when dealing cards from deck");
                 player.add_card(card);
             }
         }
