@@ -1,6 +1,6 @@
 use crate::card::Card;
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct Player {
     pub hand: Vec<Card>,
     pub name: String,

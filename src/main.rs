@@ -9,5 +9,5 @@ fn main() {
     ];
 
     let mut game = Game::new(player_names);
-    game.run();
+    game.start();
 }

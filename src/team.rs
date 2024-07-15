@@ -7,9 +7,9 @@ pub struct Team {
 }
 
 impl Team {
-    pub fn new() -> Team {
+    pub fn new(players: Vec<Player>) -> Team {
         Team {
-            players: Vec::new(),
+            players,
             score: 0,
             name: None,
         }
