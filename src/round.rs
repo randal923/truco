@@ -1,11 +1,11 @@
-pub struct Turn {
+pub struct Round {
     round: u32,
     current_player_turn: u32,
 }
 
-impl Turn {
-    pub fn new() -> Turn {
-        Turn {
+impl Round {
+    pub fn new() -> Round {
+        Round {
             round: 0,
             current_player_turn: 0,
         }

@@ -1,11 +1,11 @@
-pub struct TurnPoints {
+pub struct RoundPoints {
     team_1_score: u32,
     team_2_score: u32,
 }
 
-impl TurnPoints {
-    pub fn new() -> TurnPoints {
-        TurnPoints {
+impl RoundPoints {
+    pub fn new() -> RoundPoints {
+        RoundPoints {
             team_1_score: 0,
             team_2_score: 0,
         }

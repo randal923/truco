@@ -1,22 +1,22 @@
-use truco::turn::Turn;
+use truco::round::Round;
 
 #[test]
 fn test_new_turn() {
-    let turn = Turn::new();
-    assert_eq!(turn.round(), 0);
+    let round = Round::new();
+    assert_eq!(round.round(), 0);
 }
 
 #[test]
 fn test_next_round() {
-    let mut turn = Turn::new();
-    turn.next_round();
-    assert_eq!(turn.round(), 1);
+    let mut round = Round::new();
+    round.next_round();
+    assert_eq!(round.round(), 1);
 }
 
 #[test]
 fn test_reset() {
-    let mut turn = Turn::new();
-    turn.next_round();
-    turn.reset();
-    assert_eq!(turn.round(), 0);
+    let mut round = Round::new();
+    round.next_round();
+    round.reset();
+    assert_eq!(round.round(), 0);
 }
