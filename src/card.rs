@@ -12,9 +12,22 @@ impl Card {
     }
 
     pub fn compare_cards<'a>(cards: &'a [Card], flip_card: &Card) -> &'a Card {
-        let manilha_card = flip_card.rank.next();
-        println!("Manilha card: {:?}", manilha_card);
-        cards.iter().max_by(|a, b| a.rank.cmp(&b.rank)).unwrap()
+        let manilha_rank = flip_card.rank.next();
+
+        cards
+            .iter()
+            .max_by(|a, b| {
+                if a.rank == manilha_rank && b.rank == manilha_rank {
+                    a.suit.cmp(&b.suit)
+                } else if a.rank == manilha_rank {
+                    std::cmp::Ordering::Greater
+                } else if b.rank == manilha_rank {
+                    std::cmp::Ordering::Less
+                } else {
+                    a.rank.cmp(&b.rank)
+                }
+            })
+            .unwrap()
     }
 
     pub fn format_card(&self) -> String {

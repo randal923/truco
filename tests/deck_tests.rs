@@ -77,7 +77,7 @@ fn deck_set_manilha_if_flip_card_is_set() {
     deck.set_flip_card();
 
     let flip_card = deck.flip_card.unwrap();
-    let manilha = deck.get_manilha();
+    let manilha = deck.get_manilha_rank();
 
     assert_eq!(
         manilha,
@@ -90,7 +90,7 @@ fn deck_set_manilha_if_flip_card_is_set() {
 #[should_panic(expected = "Flip card is not set")]
 fn deck_get_manilha_panics_with_message_if_no_flip_card() {
     let deck = Deck::new();
-    let _ = deck.get_manilha();
+    let _ = deck.get_manilha_rank();
 }
 
 #[test]
