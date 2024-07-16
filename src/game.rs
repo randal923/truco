@@ -46,9 +46,12 @@ impl Game {
     fn play_turn(&mut self) {
         println!("\n{}", "Starting a new turn!".green().bold());
         self.deck.set_flip_card();
-        let flip_card = self.deck.flip_card.unwrap();
+        let flip_card = self.deck.flip_card.expect("Flip card is not set");
+        let manilha_rank = self.deck.get_manilha_rank();
         println!("Flip card: \n");
         println!("{}", flip_card.format_card());
+        println!("\nManilha: ");
+        println!("{}", Card::format_manilha_rank(manilha_rank));
 
         let mut played_cards: Vec<Card> = Vec::new();
 

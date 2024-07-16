@@ -30,7 +30,7 @@ impl Deck {
         self.flip_card = Some(flip_card);
     }
 
-    pub fn get_manilha(&self) -> Rank {
+    pub fn get_manilha_rank(&self) -> Rank {
         let flip_card = self.flip_card.expect("Flip card is not set");
         let manilha_rank = flip_card.rank.next();
 

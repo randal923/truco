@@ -34,6 +34,22 @@ impl Card {
         card_str.to_string()
     }
 
+    pub fn format_manilha_rank(rank: Rank) -> String {
+        let rank = Card::rank_to_symbol(&rank);
+
+        let card_str = format!(
+            "╭──────╮\n\
+             │      │\n\
+             │  {}   │\n\
+             │      │\n\
+             ╰──────╯\n\
+             ",
+            rank
+        );
+
+        card_str.to_string()
+    }
+
     fn rank_to_symbol(rank: &Rank) -> &str {
         match rank {
             Rank::Ace => "A",
